@@ -67,6 +67,13 @@ open class YPImagePicker: UINavigationController {
 
     override open func viewDidLoad() {
         super.viewDidLoad()
+		
+		if #available(iOS 13.0, *) {
+			overrideUserInterfaceStyle = .dark
+		} else {
+			// Fallback on earlier versions
+		}
+		
         picker.didClose = { [weak self] in
             self?._didFinishPicking?([], true)
         }
