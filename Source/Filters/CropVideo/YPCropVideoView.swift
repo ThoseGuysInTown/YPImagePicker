@@ -22,19 +22,13 @@ final class YPCropVideoView: UIView {
 	let grid = YPGridView()
 
 	private let defaultCurtainPadding: CGFloat = 15
-	private var isCircle: Bool {
-		if case YPCropType.circle = YPConfig.showsVideoCropper {
-			return true
-		}
-		return false
-	}
-
+	
 	convenience init(video: YPMediaVideo) {
 		
 		self.init(frame: .zero)
 		
 		let ratio: Double
-		switch YPConfig.showsVideoCropper {
+		switch YPConfig.showsVideoCrop {
 		case .rectangle(ratio: let configuredRatio):
 			ratio = configuredRatio
 		default:
@@ -48,7 +42,6 @@ final class YPCropVideoView: UIView {
 		videoView.previewImageView.image = video.thumbnail
 		videoView.loadVideo(video)
 		containerView.clipsToBounds = true
-		grid.isCircle = isCircle
 		grid.isHidden = !YPConfig.showsCropGridOverlay
 	}
 		
@@ -154,8 +147,8 @@ final class YPCropVideoView: UIView {
 		trailingCurtain.style(curtainStyle)
 		
 		cropArea.style { v in
-			v.backgroundColor =  isCircle ? YPConfig.colors.cropOverlayColor : .clear
-			v.isCircle = isCircle
+			v.backgroundColor =  .clear
+			v.isCircle = false
 			v.isUserInteractionEnabled = false
 		}
 		

@@ -87,8 +87,8 @@ public struct YPImagePickerConfiguration {
     /// Adds a Crop step in the photo taking process, after filters.  Defaults to .none
     public var showsCrop: YPCropType = .none
 	
-	/// Adds a Video Cropper step in the video taking process.  Defaults to true
-	public var showsVideoCropper: YPCropType = .none
+	/// Adds a Video Cropper step in the video taking process.  Defaults to .none
+	public var showsVideoCrop: YPCropVideoType = .none
 	
     /// Controls the visibility of a grid on crop stage. Default it false
     public var showsCropGridOverlay = false

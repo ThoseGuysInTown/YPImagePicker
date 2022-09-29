@@ -11,6 +11,11 @@ import AVFoundation
 import AVKit
 import VideoConverter
 
+public enum YPCropVideoType {
+	case none
+	case rectangle(ratio: Double)
+}
+
 class YPCropVideoVC: UIViewController {
 	
 	public var didFinishCropping: ((YPMediaVideo) -> Void)?

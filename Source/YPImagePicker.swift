@@ -150,8 +150,8 @@ open class YPImagePicker: UINavigationController {
                 }
             case .video(let video):
 				
-				switch YPConfig.showsCrop {
-				case .rectangle, .circle:
+				switch YPConfig.showsVideoCrop {
+				case .rectangle:
 					let cropVC = YPCropVideoVC(video: video)
 					cropVC.didFinishCropping = { croppedVideo in
 						
