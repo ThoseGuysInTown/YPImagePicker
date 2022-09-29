@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AAA21EE28E49CA700C2F5AD /* YPCropVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAA21ED28E49CA700C2F5AD /* YPCropVideoView.swift */; };
+		0AAA21EF28E49CA700C2F5AD /* YPCropVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAA21ED28E49CA700C2F5AD /* YPCropVideoView.swift */; };
+		0AAA21F128E49CB000C2F5AD /* YPCropVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAA21F028E49CB000C2F5AD /* YPCropVideoVC.swift */; };
+		0AAA21F228E49CB000C2F5AD /* YPCropVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAA21F028E49CB000C2F5AD /* YPCropVideoVC.swift */; };
 		321E6D87240CFABC00D76CD8 /* UINavigationBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321E6D86240CFABC00D76CD8 /* UINavigationBar+Extensions.swift */; };
 		327D7B592409510300B9C368 /* YPFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D7B582409510300B9C368 /* YPFonts.swift */; };
 		327D7B69240CEF2F00B9C368 /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D7B68240CEF2F00B9C368 /* UIBarButtonItem+Extensions.swift */; };
@@ -209,6 +213,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0AAA21ED28E49CA700C2F5AD /* YPCropVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YPCropVideoView.swift; sourceTree = "<group>"; };
+		0AAA21F028E49CB000C2F5AD /* YPCropVideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YPCropVideoVC.swift; sourceTree = "<group>"; };
 		16550C5C214D5EE60090BADF /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/YPImagePickerLocalizable.strings; sourceTree = "<group>"; };
 		166695DE253EFF0100F6EF9E /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/YPImagePickerLocalizable.strings; sourceTree = "<group>"; };
 		1CF8B597BBC32060C9FA476A /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -361,6 +367,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A74882C28E49AAB0040D216 /* CropVideo */ = {
+			isa = PBXGroup;
+			children = (
+				0AAA21F028E49CB000C2F5AD /* YPCropVideoVC.swift */,
+				0AAA21ED28E49CA700C2F5AD /* YPCropVideoView.swift */,
+			);
+			path = CropVideo;
+			sourceTree = "<group>";
+		};
 		52412A891CA6114A0073C4BE = {
 			isa = PBXGroup;
 			children = (
@@ -507,6 +522,7 @@
 		99C6D6A91F1FB5C100711DB2 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
+				0A74882C28E49AAB0040D216 /* CropVideo */,
 				EBA37BC326F74CE9005DAAD4 /* Photo */,
 				EB59F44D2087665500811B7B /* Video */,
 				99A3C90E20319212008D7E23 /* Crop */,
@@ -723,7 +739,6 @@
 					};
 					EBA37B4E26F749C6005DAAD4 = {
 						CreatedOnToolsVersion = 12.5.1;
-						DevelopmentTeam = B3U3XRF8D7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -847,11 +862,13 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework",
 				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
+				"${BUILT_PRODUCTS_DIR}/VideoConverter/VideoConverter.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PryntTrimmerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VideoConverter.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -888,7 +905,9 @@
 				327D7B592409510300B9C368 /* YPFonts.swift in Sources */,
 				99019E4C2018CCD6007325C2 /* YPBottomPagerView.swift in Sources */,
 				99C6D6BB1F1FB5C100711DB2 /* YPLibraryVC.swift in Sources */,
+				0AAA21EF28E49CA700C2F5AD /* YPCropVideoView.swift in Sources */,
 				99C6D6CB1F1FB5C100711DB2 /* YPHelper.swift in Sources */,
+				0AAA21F228E49CB000C2F5AD /* YPCropVideoVC.swift in Sources */,
 				EB5B07C4209146F00099C1FA /* UIButton+Extensions.swift in Sources */,
 				99019E532018CE19007325C2 /* YPPickerScreen.swift in Sources */,
 				327D7B69240CEF2F00B9C368 /* UIBarButtonItem+Extensions.swift in Sources */,
@@ -1012,6 +1031,7 @@
 				EBA37BB526F74CBB005DAAD4 /* YPAlbum.swift in Sources */,
 				EBA37BA026F74CBA005DAAD4 /* YPPhotoCaptureHelper.swift in Sources */,
 				EBA37BBF26F74CE0005DAAD4 /* YPFiltersView.swift in Sources */,
+				0AAA21EE28E49CA700C2F5AD /* YPCropVideoView.swift in Sources */,
 				EBA37B8026F74CBA005DAAD4 /* NSFileManager+Extensions.swift in Sources */,
 				EBA37B7326F74CBA005DAAD4 /* YPSelectionsGalleryVC.swift in Sources */,
 				EBA37B8126F74CBA005DAAD4 /* PHFetchResult+Extensions.swift in Sources */,
@@ -1044,6 +1064,7 @@
 				EBA37B8226F74CBA005DAAD4 /* YPPhotoSaver.swift in Sources */,
 				EBA37B6B26F74CBA005DAAD4 /* CGRect+Extensions.swift in Sources */,
 				EBA37B7926F74CBA005DAAD4 /* YPCropVC.swift in Sources */,
+				0AAA21F128E49CB000C2F5AD /* YPCropVideoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1301,7 +1322,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3U3XRF8D7;
+				DEVELOPMENT_TEAM = SQKS9Y7Q36;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

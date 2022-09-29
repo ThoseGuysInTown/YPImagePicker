@@ -149,16 +149,39 @@ open class YPImagePicker: UINavigationController {
                     showCropVC(photo: photo, completion: completion)
                 }
             case .video(let video):
-                if YPConfig.showsVideoTrimmer {
-                    let videoFiltersVC = YPVideoFiltersVC.initWith(video: video,
-                                                                   isFromSelectionVC: false)
-                    videoFiltersVC.didSave = { [weak self] outputMedia in
-                        self?.didSelect(items: [outputMedia])
-                    }
-                    self?.pushViewController(videoFiltersVC, animated: true)
-                } else {
-                    self?.didSelect(items: [YPMediaItem.video(v: video)])
-                }
+				
+				switch YPConfig.showsCrop {
+				case .rectangle, .circle:
+					let cropVC = YPCropVideoVC(video: video)
+					cropVC.didFinishCropping = { croppedVideo in
+						
+						if YPConfig.showsVideoTrimmer {
+							let videoFiltersVC = YPVideoFiltersVC.initWith(video: croppedVideo,
+																		   isFromSelectionVC: false)
+							videoFiltersVC.didSave = { [weak self] outputMedia in
+								self?.didSelect(items: [outputMedia])
+							}
+							self?.pushViewController(videoFiltersVC, animated: true)
+						} else {
+							self?.didSelect(items: [YPMediaItem.video(v: croppedVideo)])
+						}
+						
+					}
+					self?.pushViewController(cropVC, animated: true)
+				default:
+					
+					if YPConfig.showsVideoTrimmer {
+						let videoFiltersVC = YPVideoFiltersVC.initWith(video: video,
+																	   isFromSelectionVC: false)
+						videoFiltersVC.didSave = { [weak self] outputMedia in
+							self?.didSelect(items: [outputMedia])
+						}
+						self?.pushViewController(videoFiltersVC, animated: true)
+					} else {
+						self?.didSelect(items: [YPMediaItem.video(v: video)])
+					}
+					
+				}
             }
         }
     }
