@@ -14,6 +14,7 @@ import AVFoundation
 /// Supports xib initialization.
 public class YPVideoView: UIView {
     public let playImageView = UIImageView(image: nil)
+	public var timeControlStatusDidChange: ((_ isLoading: Bool) -> Void)?
     
     internal let playerView = UIView()
     internal let playerLayer = AVPlayerLayer()
@@ -59,6 +60,7 @@ public class YPVideoView: UIView {
         playerView.fillContainer()
         playImageView.centerInContainer()
         playerView.layer.addSublayer(playerLayer)
+		
     }
     
     override public func layoutSubviews() {
@@ -75,6 +77,25 @@ public class YPVideoView: UIView {
         player.seek(to: CMTime.zero)
         player.play()
     }
+	
+	override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+		if keyPath == "timeControlStatus", let change = change, let newValue = change[NSKeyValueChangeKey.newKey] as? Int, let oldValue = change[NSKeyValueChangeKey.oldKey] as? Int {
+			let oldStatus = AVPlayer.TimeControlStatus(rawValue: oldValue)
+			let newStatus = AVPlayer.TimeControlStatus(rawValue: newValue)
+			if newStatus != oldStatus {
+				DispatchQueue.main.async { [weak self] in
+					if newStatus == .playing || newStatus == .paused {
+						// video is playing
+						self?.timeControlStatusDidChange?(false)
+					} else {
+						// video is loading
+						self?.timeControlStatusDidChange?(true)
+					}
+				}
+			}
+		}
+	}
+	
 }
 
 // MARK: - Video handling
@@ -96,6 +117,10 @@ extension YPVideoView {
         
         playerLayer.player = player
         playerView.alpha = 1
+		
+		//detect when video starts playing to update loading states
+		player.addObserver(self, forKeyPath: "timeControlStatus", options: [.old, .new], context: nil)
+
         setNeedsLayout()
     }
     
