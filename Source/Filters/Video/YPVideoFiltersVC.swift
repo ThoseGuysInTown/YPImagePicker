@@ -111,6 +111,7 @@ public final class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
         selectTrim()
         videoView.loadVideo(inputVideo)
         videoView.showPlayImage(show: true)
+		videoView.play()
         startPlaybackTimeChecker()
         
         super.viewDidAppear(animated)
